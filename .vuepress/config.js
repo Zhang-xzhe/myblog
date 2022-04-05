@@ -1,6 +1,6 @@
 module.exports = {
-  title: "Krins",
-  description: 'Будет хлеб, будет молоко, все будет',
+  title: "Zhangblog",
+  description: 'This is my blog',
   dest: 'public',
   head: [
     ['link', { rel: 'icon', href: '/head.ico' }],
