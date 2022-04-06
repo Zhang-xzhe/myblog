@@ -39,7 +39,7 @@ module.exports = {
       { text: 'Contact', 
         icon: 'reco-message',
         items: [
-          { text: 'GitHub', link: 'https://github.com/Redns?tab=repositories', icon: 'reco-github' }
+          { text: 'GitHub', link: 'https://github.com/Zhang-xzhe', icon: 'reco-github' }
         ]
       }
     ],
@@ -83,9 +83,9 @@ module.exports = {
     // 最后更新时间
     lastUpdated: 'Last Updated',
     // 作者
-    author: 'Krins',
+    author: 'Zhang.xz',
     // 作者头像
-    authorAvatar: '/jing.jpg',
+    authorAvatar: '/Zhang.jpg',
     // 备案号
     record: '748391',
     // 项目开始时间
