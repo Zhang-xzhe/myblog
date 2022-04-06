@@ -1,7 +1,7 @@
 ---
 home: true
-heroText: Krins
-tagline: 嵌入式  |  FPGA  |  应用开发  |  AI  |  信号处理
+heroText: Zhangblog
+tagline: SDR  |  FPGA  |  PCB  |  Radar  |  嵌入式
 # heroImage: /hero.png
 # heroImageStyle: {
 #   maxWidth: '600px',

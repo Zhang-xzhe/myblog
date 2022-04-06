@@ -3,7 +3,7 @@ module.exports = {
   description: 'This is my blog',
   dest: 'public',
   head: [
-    ['link', { rel: 'icon', href: '/head.ico' }],
+    ['link', { rel: 'icon', href: '/logo.jfif' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
   theme: 'reco',
@@ -74,7 +74,7 @@ module.exports = {
         link: 'https://inviblog.vercel.app/'
       },
     ],
-    logo: '/logo.png',
+    logo: '/logo.jfif',
     // 搜索设置
     search: true,
     searchMaxSuggestions: 10,
