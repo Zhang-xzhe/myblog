@@ -5,6 +5,8 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/logo.jfif' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
+    ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css' }]
   ],
   theme: 'reco',
   themeConfig: {
@@ -95,7 +97,8 @@ module.exports = {
     lineNumbers: true
   },
   markdown: {
-    config: md => {
+    anchor: { permalink: false },
+    extendMarkdown: md => {
       md.use(require("markdown-it-katex"));
    }
   }
