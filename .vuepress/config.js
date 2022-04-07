@@ -93,5 +93,10 @@ module.exports = {
   },
   markdown: {
     lineNumbers: true
+  },
+  markdown: {
+    config: md => {
+      md.use(require("markdown-it-katex"));
+   }
   }
 }
