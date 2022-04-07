@@ -12,6 +12,7 @@ categories:
 
 1.DFT公式
 
-$$ X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^kn_{N} \tag{1.1} $$
-
+```Latex
+$$  X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^{kn}_{N} \tag{1.1}  $$
+```
 
