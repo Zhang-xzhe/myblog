@@ -11,12 +11,13 @@ categories:
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
 
-$J \left( \theta_0, \theta_1 \right) = \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}$
+$$J \left( \theta_0, \theta_1 \right) = \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}$$
 
 ### 一、DFT
 
 1.DFT公式
 
-$$  X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^{kn}_{N} \tag{1.1}  $$
+$  X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^{kn}_{N} \tag{1.1}  $
 
+$$
 
