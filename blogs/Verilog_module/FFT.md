@@ -17,8 +17,8 @@ $$J \left( \theta_0, \theta_1 \right) = \frac{1}{2m}\sum\limits_{i=1}^m \left( h
 
 1.DFT公式
 
-$$  X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^{kn}_{N}   $$
-$$  X(K) = \sum_{n=0}^{\frac{N}{2}}$$
+$$  X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^{kn}_{N} \tag{1.1}  $$
+$$  X(K) = \sum_{n=0}^{\frac{N}{2}-1}x[2n]\cdot W^{kn}_{N}$$
 
 
 
