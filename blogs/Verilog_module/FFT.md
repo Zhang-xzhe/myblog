@@ -22,7 +22,8 @@ categories:
 1.DFT计算公式
 
 $$   X(k) = \sum_{n=0}^{N-1} x[n]\cdot W^{kn}_{N}   $$
-其中：$ W^{kn}_{N}=e^{-j\frac{2\pi}{N}kn} $，我们可以将其写作:
+$ W^{kn}_{N}=e^{-j\frac{2\pi}{N}kn} $
+其中：$ W^{kn}_{N}=e^{-j\frac{2\pi}{N}kn} $，我们可以将其写作:$ W^{kn}_{N}=e^{-j\frac{2\pi}{N}kn} $
 $$  X(k) = \sum_{n=0}^{\frac{N}{2}-1}x[2n]\cdot W^{2kn}_{N}+\sum_{n=0}^{\frac{N}{2}-1}x[2n+1]\cdot W^{k[2n+1]}_{N} $$
 利用 $ W^{2kn}_{N}=e^{-j\frac{2\pi}{N} \cdot 2kn}=e^{-j\frac{2\pi}{\frac{N}{2}}kn}=W^{2kn}_{\frac{N}{2}} $,我们可以得到：
 $$  X(k) = \sum_{n=0}^{\frac{N}{2}-1}x[2n]\cdot W^{kn}_{\frac{N}{2}}+W^{k}_{N}\sum_{n=0}^{\frac{N}{2}-1}x[2n+1]\cdot W^{kn}_{\frac{N}{2}} $$
