@@ -77,6 +77,7 @@ $$  X(k) = （x[0]+W^{k}_{2} \cdot x[3]）+W^{k}_{6}(x[1]+W^{k}_{2} \cdot x[4])+
 8点DFT，基为2
 \
 <a href="https://sm.ms/image/HjswA1OfuSL4gMT" target="_blank"><img src="https://s2.loli.net/2022/04/11/HjswA1OfuSL4gMT.png" ></a>
+\
 27点DFT，基为3
 \
 <a href="https://sm.ms/image/mUBNRPul7MrhpIH" target="_blank"><img src="https://s2.loli.net/2022/04/11/mUBNRPul7MrhpIH.png" ></a>
