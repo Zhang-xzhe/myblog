@@ -75,6 +75,6 @@ $$  X(k) = （x[0]+W^{k}_{2} \cdot x[3]）+W^{k}_{6}(x[1]+W^{k}_{2} \cdot x[4])+
 
 # 二、结构框图
 8点DFT，基为2
-![DDC12E13D969D2BC518F5632E48991FD.png](http://imagebed.krins.cloud/api/image/DDC12E13D969D2BC518F5632E48991FD.png)
+
 8点DFT，基为2
 ![DDC12E13D969D2BC518F5632E48991FD.png](http://imagebed.krins.cloud/api/image/DDC12E13D969D2BC518F5632E48991FD.png)
