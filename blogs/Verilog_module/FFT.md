@@ -72,3 +72,9 @@ $$  X(k) = （x[0]+W^{k}_{2} \cdot x[3]）+W^{k}_{6}(x[1]+W^{k}_{2} \cdot x[4])+
 
 ## 5.雷德算法可以进一步优化每个基最小单元的内部结构
 （待续）
+
+# 二、结构框图
+8点DFT，基为2
+![DFT_radix2_8.png](/public/DFT_radix2_8.png)
+8点DFT，基为2
+![DFT_radix3_27.png](/public/DFT_radix3_27.png)
