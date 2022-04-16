@@ -1,9 +1,10 @@
 ---
-title: FFT_module：理论知识准备
+title: FFT_module：基本原理
 date: 2022-4-6
 tags:
 - fpga
 - verilog
+- Math
 categories:
 - Verilog
 ---

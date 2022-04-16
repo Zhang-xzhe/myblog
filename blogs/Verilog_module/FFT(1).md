@@ -1,5 +1,5 @@
 ---
-title: FFT_module(1)：项目规划
+title: FFT_module：项目规划
 date: 2022-4-6
 tags:
 - fpga
