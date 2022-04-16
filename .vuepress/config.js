@@ -68,10 +68,10 @@ module.exports = {
     },
     friendLink: [
       {
-        title: 'KangHua',
-        desc: 'A student from UESTC.',
-        avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        link: 'https://inviblog.vercel.app/'
+        //title: 'KangHua',
+        //desc: 'A student from UESTC.',
+        //avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
+        //link: 'https://inviblog.vercel.app/'
       },
     ],
     logo: '/logo.jfif',
