@@ -9,6 +9,9 @@ tags:
 categories:
 - Paper
 ---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
 # 共享数据的应用的节能MECO
 
 ## _Abstract_
@@ -82,6 +85,9 @@ $$E^{dl}_u=(t^{dl}_{u,S}+t^{dl}_{u})\rho^{dl}_u $$
 $\rho^{dl}_u$（J/s）表示每秒的能量消耗。
 除此之外，基站为了传输结果消耗的能量为：
 
-$$\sum_{u \in U} \frac{}{}$$
+$$\sum_{u \in U} \frac{t^{dl}_u}{{|g_u|}^2}f(\frac{a_0(D^I_{u}-D^I_{S}-D^L_{u})}{t^{dl}_u})$$
 
-$$\sum_{\mathclap{1\le i\le j\le n}} x_{ij}$$
+BS的操作员要求不超过$E_{max}$
+
+<font size=5>**C.下行链路**：</font>
+
