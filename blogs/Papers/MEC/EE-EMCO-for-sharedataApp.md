@@ -9,7 +9,9 @@ tags:
 categories:
 - Paper
 ---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
 # 共享数据的应用的节能MECO
 
 ## _Abstract_
@@ -94,7 +96,26 @@ BS的操作员要求不超过$E_{max}$
 3、在共享数据开始传输前，需要共享数据全部计算完毕，同时所有的个人数据已经上传完毕。
 综上总延时可以表示为：
 
-$$ \tau_u=max\{max\{t^{ul}_{u,S}+t^{ul}_u,max\{t^{ul}_{u,s}\}+t^C_{S}\}\} $$
+$$ \tau_u=max\bigg\{max\Big\{t^{ul}_{u,S}+t^{ul}_u,max\{t^{ul}_{u,s}\}+t^C_{S}\Big\}+t^C_u,max\Big\{max\{t^{ul}_{u,S}\}+t^C_S,max\{t^{ul}_{u,S}+t^{ul}_{u}\} \Big\}+ t^{dl}_S \bigg\}+t^{dl}_u $$
+
+## _**Problem Formulation**_
+用户消耗的所有功率可以分为三个部分：1、数据卸载上传的功率 2、本地计算的功率 3、接受数据，可表示为：
+
+$$ E_{total}=\sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+\sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})+\sum_{u \in U}(t^{dl}_{u,S}+t^{dl}_{u})\rho^{dl}_u$$
+
+问题的目标是最小化$E_{total}$，约束条件是1、计算延迟 2、最大的本地计算频率 3、在基站中对每个个体的能量消耗。问题可以描述为：
+
+目标：$min_{t^{ul}_{u,S},t^{ul}_{u},t^{C}_{u,L},t^{dl}_{u},D^L_u,D^I_{u,S}}E_{total}$
+s.t:
+$$ \tau_u \le T_{max}$$
+$$ \sum_{u \in U}\frac{t^{dl}_{u}}{|g_u|^2}f(\frac{a_0(D^I_{u}-D^I_{S}-D^L_{u})}{t^{dl}_{u}}) \le E_{max} $$
+$$ 0 \le t^C_{u,L} \le T_{max}$$
+$$ \lambda_0D^L_u \le t^C_{u,L}f_{u,max} $$
+$$ 0 \le D^L_u \le D^I_u-D^I_S $$
+$$ \sum ^U_{u=1}D^I_{u,S}=D^I_{S},D^I_{u,S} \ge 0 $$
+$$ t^{ul}_{u,S} \ge 0,t^{ul}_{u} \ge 0,t^{C}_{u,L} \ge 0,t^{dl}_{u} \ge 0$$
+
+
 
 
 结论
