@@ -62,7 +62,7 @@ $$ E^{ul}_{u}=t^{ul}_{u}P^{ul}_{u}=\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I
 
 基于某文章中的能量模型，本地计算$D^L_{u}$的数据量需要的能耗可以表示为：
 
-$$ E^C_{u}=\kappa_0\frac{(\lambda_0D^L_u)^3}{{t^C_{u,L}}^2}$$
+$$ E^C_{u}=\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}$$
 
 其中$\lambda_0$表示CPU计算1bit数据需要的时钟周期，$\kappa_0$是能耗电容系数。
 
@@ -94,7 +94,7 @@ BS的操作员要求不超过$E_{max}$
 3、在共享数据开始传输前，需要共享数据全部计算完毕，同时所有的个人数据已经上传完毕。
 综上总延时可以表示为：
 
-$$ \tau_u=max\{max\{t^{ul}_{u,S}+t^\}\} $$
+$$ \tau_u=max\{max\{t^{ul}_{u,S}+t^{ul}_u,max\{t^{ul}_{u,s}\}+t^C_{S}\}\} $$
 
 
 结论
