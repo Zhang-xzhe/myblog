@@ -63,6 +63,4 @@ $$ E^{ul}_{u}=t^{ul}_{u}P^{ul}_{u}=\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I
 基于某文章中的能量模型，本地计算$D^L_{u}$的数据量需要的能耗可以表示为：
 $$ E^C_{u}=\kappa_0\frac{(\lambda_0D^L_u)^3}{{t^C_{u,L}}^2} $$
 
-其中$\lambda_0$表示CPU计算1bit数据需要的时钟周期，$\kappa_0$是能耗电容系数。
-
 
