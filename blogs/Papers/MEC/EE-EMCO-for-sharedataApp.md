@@ -61,6 +61,6 @@ $$ E^{ul}_{u}=t^{ul}_{u}P^{ul}_{u}=\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I
 <font size=5>**B.计算模型**：</font>
 
 基于某文章中的能量模型，本地计算$D^L_{u}$的数据量需要的能耗可以表示为：
-$$ E^C_{u}=\kappa_0\frac{(\lambda_0D^L_u)^3}{{t^C_{u,L}}^2} $$
+
 
 
