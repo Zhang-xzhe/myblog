@@ -151,8 +151,7 @@ $$ t^{ul}_{u,S} \ge 0,t^{ul}_{u} \ge 0,t^{C}_{u,L} \ge 0,t^{dl}_{u} \ge 0$$
 
 <font size=5>**B.联合卸载与通信资源分配**：</font>
 引入对偶变量：$\beta ,\omega ,\sigma ,\nu$ 上述的问题就可以表示为：
-$$ L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})= \sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+$$
-$$\sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})+\sum_{u \in U}(t^{dl}_{u,S}+t^{dl}_{u})\rho^{dl}_u+ $$
+$$ L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})= \sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+\\ \sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})+\sum_{u \in U}(t^{dl}_{u,S}+t^{dl}_{u})\rho^{dl}_u+ $$
 $$ \sum_{u=1}^{U} \beta_u(t^{ul}_{u,S}+t^{ul}_{u}-T_{max}+t^{dl}_S+t^{dl})+ $$
 $$\sum_{u=1}^U\omega_{u}(\lambda_0D^L_u-t^C_{u,Lf_{u,max}})+\sum_{u=1}^{U}\sigma_u(t^{dl}_u-t^{dl})+ $$
 
