@@ -149,6 +149,18 @@ $$ \sum ^U_{u=1}D^I_{u,S}=D^I_{S},D^I_{u,S} \ge 0 $$
 6、所有时延应该大于0
 $$ t^{ul}_{u,S} \ge 0,t^{ul}_{u} \ge 0,t^{C}_{u,L} \ge 0,t^{dl}_{u} \ge 0$$
 
+<font size=5>**B.联合卸载与通信资源分配**：</font>
+引入对偶变量：$ \beta , \omega , \sigma , \nu $ 上述的问题就可以表示为：
+$$ L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})=\\ 
+\sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+\\
+\sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})+\sum_{u \in U}(t^{dl}_{u,S}+t^{dl}_{u})\rho^{dl}_u+ \\
+\sum_{u=1}^{U} \beta_u(t^{ul}_{u,S}+t^{ul}_{u}-T_{max}+t^{dl}_S+t^{dl})+\\
+\sum_{u=1}^U\omega_{u}(\lambda_0D^L_u-t^C_{u,Lf_{u,max}})+\sum_{u=1}^{U}\sigma_u(t^{dl}_u-t^{dl})+\\
+\nu[\sum_{u=1}^{U}\frac{t^{dl}_u}{{|g_u|}^2}f(\frac{a_0(D^I_{u}-D^I_{S}-D^L_{u})}{t^{dl}_{u}})-E_{max}] $$
+其中$\beta=\{\beta_1,…\beta_u\}$是与时延相关的对偶变量，$\omega=\{\omega_1,…，\omega_u\}$是与本地计算能力相关的变量，$\sigma = \{\sigma_1,…,\sigma_u\}$是与附加变量$t^{dl}$相关的约束变量，$\nu$与下行传输能量限制相关。因此拉格朗日对偶方程可以写作：
+$$g(\beta , \omega , \sigma , \nu)=\min\limits_{t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}}L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})$$
+最后的解为：
+$$\max\limits_{\beta , \omega , \sigma , \nu}g(\beta , \omega , \sigma , \nu)$$
 
 ## _**Conclusions**_
 本文中，是考虑在一个多用户云计算系统中，有多个共享数据的单天线用户，他们可以将本地数据上传到朵云计算然后下载结果。这个问题可以被建模为在1、总延迟受限。2、总的下行能量限制 3、本地计算能力的限制 这三个条件下的用户能量消耗最小问题。这是个凸问题，可以用经典拉格朗日对偶法求得最优解。根据半闭式解，可以证明共享的数据最好是一个用户发送，而不是大家一起传。提出的联合计算卸载和通信资源算法通过与其他不考虑共享数据共享或移动计算能力的算法对比被证明了。
