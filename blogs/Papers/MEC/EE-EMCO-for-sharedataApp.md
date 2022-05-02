@@ -124,43 +124,6 @@ $$ t^{ul}_{u,S} \ge 0,t^{ul}_{u} \ge 0,t^{C}_{u,L} \ge 0,t^{dl}_{u} \ge 0$$
 
 ## _**Ⅴ.Optimal scheme for joint offloading and communication resource allocation**_
 <font size=5>**A.问题重构**：</font>
-虽然卸载总时延的式子有些复杂，但是它小于一个时间最大值仍然是一个凸限制。为了便于说明，我们假设在个人数据卸载时云端执行共享数据的计算，在共享数据下发时云端执行个人数据的计算。并且我们认为云端的计算能力十分强，所以计算时延远远小于传输时延：$t^C_S \ll t^{ul}_u,t^C_u \ll t^{dl}_{u,S}$。这样时延限制简化为：
-
-$$ max\{t^{ul}_{u,S}+t^{ul}_u\}+ t^{dl}_S +t^{dl}_u \le T_{max} $$
-
-引入一个辅助变量：$t^{dl}$,它满足$t^{dl}_u \le t^{dl}$,可以推出：
-
-$$ t^{ul}_{u,S}+t^{ul}_u \le T_{max}-t^{dl}_S-t^{dl}$$
-
-注意到$E^C_u$是一个对变量$t^C_{u,L}$单调递减的。所以很显然当$t^{C}_{u,L}=T_{max}$时，本地计算消耗的能量最少。优化问题就本重构成了：
-_目标_：
-$$\min\limits_{t^{ul}_{u,S},t^{ul}_{u},t^{C}_{u,L},t^{dl}_{u},D^L_u,D^I_{u,S}}E_{total}$$
-1、时延限制，无论是采取卸载的方法还是本地计算的方法都不能超过的最大时间
-$$ t^{ul}_{u,S}+t^{ul}_u \le T_{max}-t^{dl}_S-t^{dl}$$
-$$t^{dl}_u \le t^{dl}$$
-2、基站分发个人数据所需的最大能量
-$$ \sum_{u \in U}\frac{t^{dl}_{u}}{|g_u|^2}f(\frac{a_0(D^I_{u}-D^I_{S}-D^L_{u})}{t^{dl}_{u}}) \le E_{max} $$
-3、受限于本地计算能力，留在本地的最大计算量
-$$ \lambda_0D^L_u \le t^C_{u,L}f_{u,max} $$
-4、本地的计算量，最大不超过所有的个人数据留着本地，最小不小于0
-$$ 0 \le D^L_u \le D^I_u-D^I_S $$
-5、所有节点上传的共享数据最终要能够拼成完整的共享数据
-$$ \sum ^U_{u=1}D^I_{u,S}=D^I_{S},D^I_{u,S} \ge 0 $$
-6、所有时延应该大于0
-$$ t^{ul}_{u,S} \ge 0,t^{ul}_{u} \ge 0,t^{C}_{u,L} \ge 0,t^{dl}_{u} \ge 0$$
-
-<font size=5>**B.联合卸载与通信资源分配**：</font>
-引入对偶变量：$ \beta , \omega , \sigma , \nu $ 上述的问题就可以表示为：
-$$ L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})=\\ 
-\sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+\\
-\sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})+\sum_{u \in U}(t^{dl}_{u,S}+t^{dl}_{u})\rho^{dl}_u+ \\
-\sum_{u=1}^{U} \beta_u(t^{ul}_{u,S}+t^{ul}_{u}-T_{max}+t^{dl}_S+t^{dl})+\\
-\sum_{u=1}^U\omega_{u}(\lambda_0D^L_u-t^C_{u,Lf_{u,max}})+\sum_{u=1}^{U}\sigma_u(t^{dl}_u-t^{dl})+\\
-\nu[\sum_{u=1}^{U}\frac{t^{dl}_u}{{|g_u|}^2}f(\frac{a_0(D^I_{u}-D^I_{S}-D^L_{u})}{t^{dl}_{u}})-E_{max}] $$
-其中$\beta=\{\beta_1,…\beta_u\}$是与时延相关的对偶变量，$\omega=\{\omega_1,…，\omega_u\}$是与本地计算能力相关的变量，$\sigma = \{\sigma_1,…,\sigma_u\}$是与附加变量$t^{dl}$相关的约束变量，$\nu$与下行传输能量限制相关。因此拉格朗日对偶方程可以写作：
-$$g(\beta , \omega , \sigma , \nu)=\min\limits_{t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}}L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})$$
-最后的解为：
-$$\max\limits_{\beta , \omega , \sigma , \nu}g(\beta , \omega , \sigma , \nu)$$
 
 
 ## _**Conclusions**_
