@@ -163,9 +163,9 @@ $$\max\limits_{\beta , \omega , \sigma , \nu}g(\beta , \omega , \sigma , \nu)$$
 给出一组确定的对偶变量$\beta , \omega , \sigma , \nu$,最优解可以通过下面的方式来求解。
 最优的原始变量$t^{ul}_{u,S},t^{ul}_u,t^{dl}_u$可以表示为：
 式子对$t^{ul}_{u,S}$求导，令其为0
-$$ 0 = L'(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}) \\
-=\bigg(\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})\bigg)'+\bigg(\beta_u(t^{ul}_{u,S}+t^{ul}_{u}-T_{max}+t^{dl}_S+t^{dl})\bigg)'\\
-=\bigg(\frac{1}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})-\frac{t^{ul}_{u,S}}{|h_u|^2}(ln2 N^02^{\frac{D^I_{u,S}}{W^{ul}_ut^{ul}_{u,S}}}\frac{D^I_{u,S}}{W^{ul}_u(t^{ul}_{u,S})^2})\bigg)+\beta_u$$
+$$ 0 = L'(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}) $$
+$$=\bigg(\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})\bigg)'+\bigg(\beta_u(t^{ul}_{u,S}+t^{ul}_{u}-T_{max}+t^{dl}_S+t^{dl})\bigg)'$$
+$$=\bigg(\frac{1}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})-\frac{t^{ul}_{u,S}}{|h_u|^2}(ln2 N^02^{\frac{D^I_{u,S}}{W^{ul}_ut^{ul}_{u,S}}}\frac{D^I_{u,S}}{W^{ul}_u(t^{ul}_{u,S})^2})\bigg)+\beta_u$$
 等式可以变形为：
 $$ -\beta_u = \frac{1}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})-\frac{t^{ul}_{u,S}}{|h_u|^2}(ln2 N^02^{\frac{D^I_{u,S}}{W^{ul}_ut^{ul}_{u,S}}}\frac{D^I_{u,S}}{W^{ul}_u(t^{ul}_{u,S})^2})$$
 $$ -\beta_u |h_u|^2= f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})-t^{ul}_{u,S}(ln2 N^02^{\frac{D^I_{u,S}}{W^{ul}_ut^{ul}_{u,S}}}\frac{D^I_{u,S}}{W^{ul}_u(t^{ul}_{u,S})^2})$$
@@ -210,7 +210,7 @@ $$ \hat{D}^L_u=min\bigg\{T_{max}\sqrt{[\frac{N_0ln2}{3 \kappa_0\lambda_0^3}(\fra
 其中：
 $$ \hat{r}^{ul}_u = \frac{W^{ul}_u}{ln2}(W_0(\frac{1}{e}(\frac{\beta_u |h_u|^2}{N^0}-1))+1)$$
 $$ \hat{r}^{dl}_u = \frac{W^{ul}_u}{a_0ln2}(W_0(\frac{1}{e}(\frac{(\rho^{dl}_u+\sigma_u)  |g_u|^2}{\nu N^0}-1))+1)$$
-事实上，一方面$\hat{r}^{ul}_u，\hat{r}^{dl}_u$可以被看作给定对偶变量下最优的上下行传输效率。另一方面，在信道条件不变的情况下，最佳的共享数据传输速率和个人的传输速率在上行时是相等的。
+事实上，一方面$\hat{r}^{ul}_u,\hat{r}^{dl}_u$可以被看作给定对偶变量下最优的上下行传输效率。另一方面，在信道条件不变的情况下，最佳的共享数据传输速率和个人的传输速率在上行时是相等的。
 观察法可知,为了使目标函数最小需要分两种情况讨论：
 $$ \hat{t}^{dl}=\begin{cases}
    0 &\text{if } \sum_{u = 1}^{U}\beta_u-\sum_{u=1}^{U}\sigma_u \ge 0\\
