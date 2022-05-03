@@ -152,8 +152,8 @@ $$ t^{ul}_{u,S} \ge 0,t^{ul}_{u} \ge 0,t^{C}_{u,L} \ge 0,t^{dl}_{u} \ge 0$$
 <font size=5>**B.联合卸载与通信资源分配**：</font>
 引入对偶变量：$\beta ,\omega ,\sigma ,\nu$ 上述的问题就可以表示为
 
-$$ L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})= \sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+\\ \sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})  $$
-其中$\beta =\{ \beta_1,..., \beta_u\}$是与时延相关的对偶变量，$\omega=\{ \omega_1,...,\omega_u \}$是与本地计算能力相关的变量，$\sigma = \{ \sigma_1,...,\sigma_u \} $是与附加变量$t^{dl}$相关的约束变量，$\nu$与下行传输能量限制相关。因此拉格朗日对偶方程可以写作：
+$$ L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})= \sum_{u \in U}\frac{t^{ul}_{u,S}}{|h_u|^2}f(\frac{D^I_{u,S}}{t^{ul}_{u,S}})+\sum_{u \in U}\kappa_0\frac{(\lambda_0D^L_u)^3}{(t^C_{u,L})^2}+ \sum_{u \in U}\frac{t^{ul}_{u}}{|h_u|^2}f(\frac{D^I_{u}-D^I_{S}-D^L_{u}}{t^{ul}_{u}})  $$
+其中$\beta =\{ \beta_1,..., \beta_u\}$是与时延相关的对偶变量，$\omega=\{ \omega_1,...,\omega_u \}$是与本地计算能力相关的变量，$\sigma = \{ \sigma_1,...,\sigma_u \}$是与附加变量$t^{dl}$相关的约束变量，$\nu$与下行传输能量限制相关。因此拉格朗日对偶方程可以写作：
 $$g(\beta , \omega , \sigma , \nu)=\min\limits_{t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}}L(\beta , \omega , \sigma , \nu,t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S})$$
 最后的解为：
 $$\max\limits_{\beta , \omega , \sigma , \nu}g(\beta , \omega , \sigma , \nu)$$
