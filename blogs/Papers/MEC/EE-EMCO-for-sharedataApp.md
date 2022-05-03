@@ -225,5 +225,23 @@ $$ \hat{D}^{I}_{u,S}=\begin{cases}
 其中：
 $$ \Delta_u = \frac{f(\hat{r}^{ul}_{u,S})}{\hat{r}^{ul}_{u,S}|h_u|^2}+\frac{ \beta_u }{\hat{r}^{ul}_{u,S}}$$
 即只需要$\Delta_u$最小的用户上传共享数据就行了。
-## _**Conclusions**_
+
+基于上面的命题，对偶问题可以用椭圆方法递归解决，总结如下：
+
+输入变量：$\beta_0,\omega_0,\sigma_0,\nu_0$
+1、循环直到精度满足要求：循环变量i
+在给定的$\beta_i,\omega_i,\sigma_i,\nu_i$情况下，利用之前的推论可以计算出$t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}$等变量。
+接着根据椭圆方法计算出新的$\beta_{i+1},\omega_{i+1},\sigma_{i+1},\nu_{i+1}$，L对$\beta_i,\omega_i,\sigma_i,\nu_i$分别求导。
+2、求得最终的$\beta_*,\omega_*,\sigma_*,\nu_*$
+3、用$\beta_*,\omega_*,\sigma_*,\nu_*$带入求得最终的$t^{ul}_{u,S},t^{ul}_{u},t^{dl}_{u},t^{dl},D^L_u,D^I_{u,S}$
+
+## _**Ⅵ.Numerical results**_
+这个部分将展示本文中提出的算法和基准算法的数值解。这部分的基线算法有三种：1、不考虑共享数据的卸载：合作属性被忽略了，每个用户独立决定。2、全部卸载：考虑了共享数据，但是本地不做仍和计算，直接全部上传。3、相同时间卸载：考虑相关的数据，但是每个用户用相同的时间上传和卸载数据，用CVX求得最优解。4、全部本地算
+仿真中，带宽（上下行）：10MHz、最大下行传输功率：1W、个人数据大小：10k、信道噪声功率谱密度：-169dBm/Hz……
+最终结果如下：
+<a href="https://sm.ms/image/3QsiqDhAkcojFnC" target="_blank"><img src="https://s2.loli.net/2022/05/03/3QsiqDhAkcojFnC.png" ></a>
+图二表示延迟和能耗的关系。
+<a href="https://sm.ms/image/nGMdWrwPvU5SFCp" target="_blank"><img src="https://s2.loli.net/2022/05/03/nGMdWrwPvU5SFCp.png" ></a>
+图三表示能耗与共享比例的关系。
+## _**Ⅶ.Conclusions**_
 本文中，是考虑在一个多用户云计算系统中，有多个共享数据的单天线用户，他们可以将本地数据上传到朵云计算然后下载结果。这个问题可以被建模为在1、总延迟受限。2、总的下行能量限制 3、本地计算能力的限制 这三个条件下的用户能量消耗最小问题。这是个凸问题，可以用经典拉格朗日对偶法求得最优解。根据半闭式解，可以证明共享的数据最好是一个用户发送，而不是大家一起传。提出的联合计算卸载和通信资源算法通过与其他不考虑共享数据共享或移动计算能力的算法对比被证明了。
