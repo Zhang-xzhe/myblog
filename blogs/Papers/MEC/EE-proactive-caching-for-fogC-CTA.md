@@ -37,3 +37,75 @@ categories:
 
 <a href="https://sm.ms/image/tsWp5wMVPeDmRvn" target="_blank"><img src="https://s2.loli.net/2022/05/10/tsWp5wMVPeDmRvn.png" ></a>
 
+我们假设每个任务都需要在每个时隙结束前完成。因为当前时隙的任务是和未来的任务相关的，所以现在时刻任务的计算结果就可以存在AP这儿对未来计算有用。因为缓存会有开销（延时，能量，存储），所以全部存起来是不太好的。因此，我们引入一个变量$I_i,i \in \Nu$来表示时候i时刻需要缓存数据：
+$$ I_i=\begin{cases}
+   1 &\text{if } cache the result\\
+   0 &\text{if } otherwise
+\end{cases}$$
+所以缓存使能的雾计算系统的工作流程可以描述为：用户将一部分任务放到终端上算，另一部分自己本地算。如果AP觉得没有必要缓存这个数据，那么就传回给用户；否则用户就把剩下的上传给AP。由于AP有足够的传输资源，比如传输功率，所以在后续中我们忽略用户从AP下载时的时延和能量。
+
+### A、用户端的本地执行，运算卸载和计算上传
+
+我们用$L_i$表示i时隙的任务数据的长度，这个长度是可以预测的，但是有误差,可以表示为$ L_i = \hat L_i + \Delta L_i$，其中$\Delta L_i$是一个任意的序列（可以是确定的，也可以是随机的）。在时隙i时，所有i时刻以及i时刻前的输入数据长度AP是知道的，但是i时隙之后的只有在未来才知道。我们将需要在i时隙计算的比特用前面时候是否缓存的决定来表示：
+
+$$D_i = L_i(I_{i-1} \tau_1+...+\prod_{j-1}^{k-1}(1-I_{i-j})I_{i-k}\tau_k+...
++\prod_{j=1}^{r-1}(1-I_{i-j})I_{i-r}\tau_r+\prod_{j=1}^{r}(1-I_{i-j}))$$
+
+其中$\bold \tau = [\tau_1,\tau_2,...,\tau_r]^T $中的元素随着下标的增长而增长。但是$\tau_j \in [0,1]$。从式子中可以看出只有可能一项为非0，比如，$I_{i-1} = 0, I_{i-2} = 1$则$D_i = L_i\tau_2$。而且$D_i$代表要计算的比特数，随着$\tau_j$的变大而变大，说明需要计算得越多，就说明了随着时间的距离越长缓存能带来的当前计算量的较少量越少。而且时间距离超过$r$距离的缓存被认为没有什么价值。
+
+**Local Execution** 要处理的$D_i$比特可以被分为两部分，$l_i$和$D_i-l_i$分别代表本地计算和远端计算。所以本地计算需要的计算周期可以表示为$c_{loc}l_i$，其中$c_{loc}$表示每比特需要多少计算周期，这和CPU性能等有关。如果假设本地计算频率恒定为$f_{loc}$，那么i时隙本地计算的能量可以表示为：
+
+$$ E^{loc}_{c,i} = \kappa_{loc}c_{loc}l_if^2_{loc}$$
+
+其中$ \kappa_{loc} $表示用户的有效电容容量。
+
+**Task Offloading** 通过AP端的最大比合并技术，可以实现的卸载速率为$r^{off}_i = B_{off}log_2(1+p_ih_i)$，其中$h_i$表示i时隙用户到AP的归一化信道增益，$B_{off}$表示的是任务卸载的带宽。所以任务卸载花费的时间可以表示为：$t^{off}_i = (D-i-l_i)/r^{off}_i$任务卸载相关的能量可以表示为：
+
+$$E^{off}_i = \frac{p_i(D_i-l_i)}{r^{off}_i}$$
+
+**Computation Uploading** 假设用户没有缓存能力。所以i时隙结束的时候用户需要上传数据给AP。给出上传的速度$r^{up}_i$，那么上传消耗的能量可以表示为：
+
+$$ E^{up}_i = I_i \frac{p_iR_i}{r^{up}_i} $$
+
+其中$R_i$是任务输出的长度。
+
+### B、远端执行以及AP的计算缓存
+
+在模型中，AP负责描述任务信息（$\hat L_i,R_i$）、信道状态（$h_i,g_i$），收集其他需要的信息作为一个先验信息。根据这些AP会决定用户的缓存策略。
+
+**Remote Execution** 与Location Execution推导相似，可以表示为：
+
+$$E^e_{c,i} = \kappa_ec_e(D_i-l_i)f^2_e $$
+
+其中$\kappa_e,c_e$分别表示有效电容系数，执行一比特需要的CPU周期。
+
+**Computation Caching** 如果AP决定这个时隙需要缓存，那么就需要用户把在用户那边计算的那部分也上传上来，和在AP这儿算的东西结合形成一整块的缓存数据。
+
+### C、建模问题
+
+我们希望在有限时间$ \Nu$内实现能量消耗的最小化，也就是$\sum_{i \in \Nu}(\alpha_1(E^{loc}_{c,i}+E^{off}_i+E^{up}_i)+\alpha_0E^e_{c,i})$最小化，其中$\alpha_0,\alpha_1$满足$\alpha_0+\alpha_1=1$，他们控制了用户和AP的能量节省权重。我们计划联合优化计算卸载策略$l_i$和是否缓存$I_i$，我们结合上面的等式，可以将问题表示为：
+
+$$(P1):\min_{l_i,I_i}\sum_{i \in \Nu}\bigg(\alpha_1\Big(\kappa_{loc}c_{loc}l_if^2_{loc}+I_i \frac{p_iR_i}{r^{up}_i}+ \frac{p_i(D_i-l_i)}{r^{off}_i}\Big) +\alpha_0\kappa_ec_e(D_i-l_i)f^2_e\bigg)$$
+
+$$\frac{D_i-l_i}{r^{off}_i}+\frac{c_e(D_i-l_i)}{f_e} \le T$$
+$$ \frac{c_{loc}l_i}{f_{loc}}+I_i\frac{R_i}{r^{up}_i} \le T$$
+$$0 \le l_i \le D_i$$
+$$ I_i \in \{0,1\}$$
+## _Offline compuation offloading and caching_
+
+在这部分中，我们假定任务数据输入是可以预测的，在AP中作为先验信息，得到一个对P1的离线解。这个离线解也是其他在线解的上限。在本文中我们仅考虑r = 2时的情况，即当前时隙最多与前两个时隙相关。其他的情况将在以后研究。
+
+解决问题P1的主要难点在于二进制变量$I_i$。为了解决这一问题，首先，我们我们将$ I_i \in \{0,1\}$等效为$I_i(I_i-1) = 0$这样就可以将这个问题转化为二次约束的二次规划问题（QCQP）。下面我们将QCQP问题转化为半定问题。首先，我们定义卸载相关的矩阵$F' = [(1-\tau_2)F,\frac{1}{2}v;\frac{1}{2}v^{T},0]$，其中
+$$F = \sum^{N}_{1=3} = \frac{p_iL_i}{r^{off}_i}G_{i-2,i-1}$$
+其中$G_{i-2,i-1}$是一个对称矩阵，其中只有$G_{i-2,i-1}(i-2,i-1),G_{i-2,i-1}(i-1,i-2)$为$\frac{1}{2}$
+$$v = (\tau_1-1)\sum^{N}_{i=2}\frac{p_iL_i}{r^{off}_i}e_{i-1}+(\tau_2-1)\sum^{N}_{i=3}\frac{p_iL_i}{r^{off}_i}e_{i-2}$$
+其中$e_j$表示只有第j个元素为1的向量。
+
+接着我们定义上传相关的矩阵$W = [0_{N*N},\frac{1}{2}w;\frac{1}{2}w^T,0]$，其中$w = [\frac{p_1R_1}{r^{up}_1},...,\frac{p_NR_N}{r^{up}_N}]^T$。
+定义卸载向量$u = [\frac{p_1}{r^{off}_1},...,\frac{p_N}{r^{off}_N}]^T$；
+以及定义了数据量相关的矩阵$G' = [(1-\tau_2)G,\frac{1}{2}s;\frac{1}{2}s^T,0]$，其中$G = c_e\sum^N_{i=3}L_iG_{i-1,i-2}$, $s = (\tau_1-1)c_e\sum^N_{i=2}L_ie_{i-1}+(\tau_1-2)c_e\sum^N_{i=2}L_ie_{i-2}$
+定义了工具阵$E_i = [0_{N*N},\frac{1}{2}e_i;\frac{1}{2}e_i^T,0]$和$U_i = [diag(e_i),-\frac{1}{2}e_i;-\frac{1}{2}e_i^T,0]$。
+
+下面我们引入向量$a = [I;1]$以及$A = aa^T$。通过松弛秩一条件和一些操作，原来的问题能够被重构为SDP（半正定规划问题）:
+
+$$ (P'1):\min_{A,l}\alpha_1(Tr(AF')+Tr(AW)-u^Tl+\kappa_{loc}c_{loc}f^2_{loc}1^Tl)$$
