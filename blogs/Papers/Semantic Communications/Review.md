@@ -1,12 +1,16 @@
 ---
-title: Semantic communications:Overview,Open issues,and Futrue research dirrctions
-date: 2022-5-10
+title: Stable Online Computation Offloading via Lyapunov-guided Deep Reinforcement Learing
+date: 2022-4-26
 tags:
-- Semantic Communication
-- review
+- MEC
+- computation offload
+- DRL
+- math
 categories:
 - Paper
 ---
+
+
 # 语义通信：概述，未解决的问题以及未来的研究方向
 
 ## _Abstract_
