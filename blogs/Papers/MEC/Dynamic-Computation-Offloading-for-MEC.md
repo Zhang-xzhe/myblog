@@ -54,7 +54,7 @@ _**Computation Model**_
 我们用$A(L,\tau_d)$来表示一个计算任务，$L (bits)$表示任务的大小，$\tau_d$表示执行的DDL。移动端的上的计算需求可以被建模为独立同分布的伯努利过程。在一个时隙开始时，计算任务$A(L,\tau_d)$以p的概率被需要。用$\zeta^t = 1$表明在第t个时隙需要一个任务，也就是说$P(\zeta^t = 1) = 1-P(\zeta^t = 0) = p$，我们关注那些时延敏感应用，也就是说$\tau_d < \tau$需要小于DDL，同时假设没有buffer来进行缓冲。
 
 每个计算任务都可以选择在本地计算，或者发到服务器进行计算。也可能两种选择都不行，比如设备没电了，这时，计算任务就会被丢弃。用$I_j^t \in \{0,1\}$来表明计算模式，其中$j = \{m,s,d\}$，$I^t_m = 1$表明在t时隙任务在移动端(M)执行，$I^t_s$表明在t时隙在服务器（S）执行，$I^t_d$表明t时隙任务被丢弃（D）。所以有：
-$$ I  (t_m+I)t_s+I^t_d=1,t\in\Tau	$$
+$$ I^t_m+I^t_s+I^t_d=1,t\in\Tau	$$
 
 **本地执行模型**:
 
@@ -91,5 +91,56 @@ $$B^{t+1}=B^t-\mathcal E(I^t,f^t,p^t)+e^t,t\in\Tau$$
 **执行花费最小化问题**：
 
 执行延迟是用户体验的重要指标。在我们的决策中，将这一指标用于优化计算卸载策略。然而由于EH的突发性和间断性，计算任务可能被丢弃。为了将这一部分纳入考虑范围，我们用一个单位的花费来表示任务丢弃。所以我们可以将执行损耗定义如下：
-$$$$
-是任务丢弃的加权系数。是指示函数
+$$cost^t=\mathcal D(I^t,f^t,p^t)+\phi\cdot\bold 1(\zeta^t=1,I^t_d=1)$$
+$\phi$是任务丢弃的加权系数。$1(\cdot)$是指示函数，$D(I^t,f^t,p^t)$表示如下：
+$$D(I^t,f^t,p^t)=\bold1(\zeta^t=1,I^t_d=1)\cdot(I^t_mD^t_{mobile}+I^t_sD^t_{server})$$
+一般而言，我们假设延时比任务丢弃更好。即$\tau_d \le \phi$
+如果要完成执行，那么延时要比DDL小，即
+$$\mathcal D(I^t,f^t,p^t)\le{\tau_d},t\in\Tau$$
+因此，ECM问题可以被表达为：
+$$P_1: \min\limits_{I^t,f^t,p^t,e^t}\lim\limits_{T\rightarrow\infty}\frac{1}{T}\mathbb E \bigg[\sum\limits^{T-1}_{t=0}cost^t\bigg]$$
+$$ s.t.    I^t_m+I^t_s+I^t_d=1,t\in\Tau $$
+$$0\le{e^t}\le{E^t_H},t\in\Tau$$
+$$\mathcal E(I^t,f^t,p^t)\le{B^t}\le{+\infty},t\in\Tau$$
+$$D(I^t,f^t,p^t)\le{\tau_d},t\in\Tau$$
+$$I^t_m+I^t_s\le\zeta^t,t\in\Tau$$
+$$\mathcal E(I^t,f^t,p^t)\le E_{max},t\in\Tau$$
+$$0\le p^t\le p^{max}_{tx}\cdot \bold1(I^t_s=1),t\in\Tau$$
+$$0\le f^t_w \le f^{CPU}_{max}\cdot\bold1(I^t_m=1),w=1,\ldots,W,t\in\Tau$$
+$$I^t_m,I^t_s,I^t_d\in\{0,1\},t\in\Tau$$
+
+**问题分析**：
+在MEC系统中系统的状态是由：任务需求，可收集的能量，电池能量水平，以及信道状态组成；系统行动是能量收集和计算卸载决策，包括设定的CPU时钟周期和分配的传输功率。行动的决定之和当前状态相关和过去的状态无关。除此之外，目标是长期的执行损耗最小。因此这是一个马尔可夫决策过程。理论上，这个问题应该由通过标准的MDP算法来解决，比如：相对值迭代算法和线性规划重构算法。然而这两种算法都是用有限状态来表征系统，离散化可执行集。例如，用20个状态离散信道，20个状态离散电量，5个状态离散收集的能量……这样就有了有限多种的系统状态。应用相对值迭代算法将会花很长时间收敛，因为大量的可行集。应用线性规划重构算法需要解一个超级多变量的线性规划问题，是几乎不能实现的。除此之外，通过马尔科夫决策过程很难获得深入的解，因为是基于数值的。除此之外，量化会造成性能下降，而且需要大量的内存存储最优决策。
+
+下一部分，我们提出了Lyapunov优化动态计算卸载算法，它有如下性质：
+
+1、不需要量化，在每个时隙的决策是很简单的，不需要内存来存储最优策略。
+2、不需要先验信息
+3、算法的性能被一个二元组控制，通过调整这写参数可以任意的逼近最优解。
+4、有一个电池容量上界，可以指导实际的生产活动。
+
+
+## _Dynamic Computation Offloading:the LODCO algorithm_
+
+在这部分，我们将用LODCO算法来解决问题。首先我们将说明最优的CPU频率具有的特征，这可以帮助我们简化问题。为了利用lyapunov优化，我们引入了修改的ECM问题来辅助算法设计。接着说明LODCO算法，最后我们说明解是渐进最优的。
+
+**LODCO算法**：
+我们首先证明在单个计算任务中的W个CPU周期中最优的CPU频率应该是相同的，就像下面提到的引理一样。
+
+引理1：如果一个计算任务在第t个时隙被决定在本地执行那么，最优的CPU计算频率应该是相同的。即$f^t_w = f^t,w = 1,...,W$
+证明：可以通过矛盾证明，这里为了简洁省略了。
+
+引理1中CPU周期的性质表明我们只需要优化一个标量$f^t$而不是一个W维向量$\mathbf{f^t}$。由于$\mathcal E(I^t,f^t,p^t)\le{B^t}\le{+\infty},t\in\Tau$的限制，导致不同时隙的系统的决策相互耦合。这是设计EH系统常见的困难。我们发现通过引入电池的非零下界$E_{min}$，这种耦合就被消除了，所以我们的问题可以被优化为：
+$$P_2: \min\limits_{I^t,f^t,p^t,e^t}\lim\limits_{T\rightarrow\infty}\frac{1}{T}\mathbb E \bigg[\sum\limits^{T-1}_{t=0}cost^t\bigg]$$
+$$ s.t.    I^t_m+I^t_s+I^t_d=1,t\in\Tau $$
+$$0\le{e^t}\le{E^t_H},t\in\Tau$$
+$$\mathcal E(I^t,f^t,p^t)\le{B^t}\le{+\infty},t\in\Tau$$
+$$D(I^t,f^t,p^t)\le{\tau_d},t\in\Tau$$
+$$I^t_m+I^t_s\le\zeta^t,t\in\Tau$$
+$$\mathcal E(I^t,f^t,p^t)\le E_{max},t\in\Tau$$
+$$0\le p^t\le p^{max}_{tx}\cdot \bold1(I^t_s=1),t\in\Tau$$
+$$0\le f^t_w \le f^{CPU}_{max}\cdot\bold1(I^t_m=1),w=1,\ldots,W,t\in\Tau$$
+$$I^t_m,I^t_s,I^t_d\in\{0,1\},t\in\Tau$$
+$$\mathcal E(I^t,f^t,p^t)\in{0}\bigcup[E_{min},E_{max}],t\in\Tau$$
+
+与问
