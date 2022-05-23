@@ -143,4 +143,8 @@ $$0\le f^t_w \le f^{CPU}_{max}\cdot\bold1(I^t_m=1),w=1,\ldots,W,t\in\Tau$$
 $$I^t_m,I^t_s,I^t_d\in\{0,1\},t\in\Tau$$
 $$\mathcal E(I^t,f^t,p^t)\in{0}\bigcup[E_{min},E_{max}],t\in\Tau$$
 
-与问
+与问题1相比，$f^t$是标量，使得移动端的延时$D^t_{mobile} = W \cdot \frac{1}{f^t}$，能量为$E^t_{mobile} = W_{\kappa} \cdot (f^t)^2$。标志问题$P_1$的最优解为$ EC^*_{P_1} $ ，问题 $ P_2 $ 的最优解为 $ EC^*_{P_2} $。下面的命题表明了这两个解之间的关系，这将帮助我们显示提出算法的逐渐优化特性。
+
+命题1：问题2的最佳值比问题1的大，但是比问题1的最佳值加上一个正数（$v(E_{min})$）小。$EC^*_{P_1} \le EC^*_{P_2} \le EC^*_{P_1}+v(E_{min})$，其中$v(E_{min}) = \rho[\phi (1-F_H( \eta ))+1_{E_{min} \ge E^{\tau_d}_{min}} \cdot (\phi - \tau_{E_{min}})]$，其中$ \eta = (2^{\frac{L}{\tau_{d^w}}}-1) \sigma \tau_d E^{-1}_{min} ,E^{\tau_d}_{min} = \kappa W^3 \tau^{-2}_d, \tau_{E_{min}} = \kappa^{\frac{1}{2}}W^{\frac{3}{2}}E^{-\frac{1}{2}}_{min}$
+
+证明：

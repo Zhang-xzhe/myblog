@@ -1,5 +1,5 @@
 ---
-title: Stable Online Computation Offloading via Lyapunov-guided Deep Reinforcement Learing
+title: Lyapunov-guided Deep Reinforcement Learning for stable online computation offloading in mobile-edge computing networks
 date: 2022-4-26
 tags:
 - MEC
@@ -9,16 +9,15 @@ tags:
 categories:
 - Paper
 ---
-# 在MEC（移动边缘计算）中稳定在线计算卸载的Lyapunov引导的DRL（深度强化学习）
+# 通过Lyapunov引导的深度强化学习解决移动网络中的稳定在线计算卸载
 
 ## _Abstract_
 
-在动态边缘环境中投机计算卸载是一个提升MEC网络计算能力的有效方法。
+<font size=5>**背景**：</font>优化计算卸载在动态是一个提高MEC计算性能的高效方法。本文中我们考虑一个信道时变的随机任务到达的多用户的MEC网络。特别是，我们打算设计一个在长期数据队列稳定以及功率受限的情况下的在线卸载算法来最大化网络处理数据流量。在线算法因为假设信道条件和到达的任务量都是随机的
 
-<font size=5>**背景**：<font>
-本文中我们考虑时变无线信道和按顺序时间帧到达的随机用户任务数据条件下的多用户MEC网络。
+<font size=5>**问题**：</font>我们打算设计一个在长期数据序列稳定，平均功率受限的条件下，设计一个在线的计算卸载算法来最大化网络数据处理能力。从 为每个时间帧在没有未来信道条件和数据到来假设下的决定 的意义上来说，在线算法是实际的。我们把在连续时间帧中二元计算卸载（要么全部用户算要么全部服务器算）和系统资源分配联合处理的问题建模为一个多阶随机混合整数非线性规划（MINLP）问题。
 
-<font size=5>**背景**：<font>我们打算设计一个在长期数据序列稳定并且平均功率受限的条件下的在线计算卸载算法以最大化网络数据处理能力。在线算法是实际的，因为每个时间帧的决定都是在未来信道条件和到达数据不知道的情况下做出的。
-<font size=5>**背景**：<font>
-j
-<font size=5>**背景**：<font>
+<font size=5>**方法**：</font>为了耦合不同时间帧的决定，我们提出了一个新颖的网络LyDROO，它结合了Lyapunov和
+DRL。特别是LyDROO首次应用Lyapunov优化将多阶随机MINLP问题解耦为确定的每帧更小的MINLP子问题。其次，它结合了有模型的优化和没有模型的DRL在低计算复杂度的条件下解决每帧的MINLP问题。
+
+<font size=5>**结果**：</font>仿真结果显示在满足所有长期限制下，我们提出的LyDROO实现了最佳计算性能。除此之外除此之外它非常低的执行时延非常适合快衰落环境
