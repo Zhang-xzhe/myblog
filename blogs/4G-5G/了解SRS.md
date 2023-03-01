@@ -7,5 +7,5 @@ tags:
 categories:
 - communication
 ---
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
+
 
