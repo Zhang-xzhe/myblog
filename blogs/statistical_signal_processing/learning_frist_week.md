@@ -28,7 +28,8 @@ I list some that I feel a little unfamiliar with and some new terminnology:
 (probability mass function) is the discrete form of pdf
 ## 3. multivariate Gaussian density 
 $ p(x) = \frac{1}{\sqrt{(2\pi^d)|\sum|}}e^{\frac{1}{2}(x-\mu)^T\sum(x-\mu)} $
-$\sum$ is covariance matrix $\sum_{ij} = E[(x_i-\mu_i)(x_j-\mu_j)]$, d is the dimension of x.
+\
+$\sum $ is covariance matrix $\sum_{ij} = E[(x_i-\mu_i)(x_j-\mu_j)]$, d is the dimension of x.
 ## 4. characteristic function:
 $\phi(w) = E(exp(-iwx))$ it is useful when demonstrate something
 ## 5. inequality
