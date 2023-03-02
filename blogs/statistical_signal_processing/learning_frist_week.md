@@ -101,7 +101,7 @@ when $s_n-E(s_n)<0$, we can do the similar proof, so get $p(|s_n-E(s_n)|>=t) =< 
 
 4. For Guassian distribution
 
-$\frac{1}{\sqrt{2\pi}}\int_{t}e^{\frac{-x^2}{2}}dx <= min{\frac{1}{2}e^{\frac{t^2}{2}},\frac{1}{\sqrt{2\pi}t^2}}e^{\frac{-t^2}{2}}$
+$\frac{1}{\sqrt{2\pi}}\int_{t}e^{\frac{-x^2}{2}}dx <= min\{\frac{1}{2}e^{\frac{t^2}{2}},\frac{1}{\sqrt{2\pi}t^2}e^{\frac{-t^2}{2}}\}$
 
 the proof is simple
 
