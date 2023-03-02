@@ -38,6 +38,7 @@ $\phi(w) = E(exp(-iwx))$ it is useful when demonstrate something
 z is non-negative random variable, t is a constant and t>0.
 
 $p(z>t) < \frac{E(z)}{t}$
+
 2. chebyshev inequality
 
 $p(|z-E(z)|>t) = p(|z-E(z)|^2>t^2) < \frac{E[|z-E(z)|^2]}{t^2} = \frac{Var(z)}{t^2}$
@@ -56,7 +57,7 @@ $p(x>t) = p(e^{sx}>e^{st}) < e^{-st}E(e^{sx})$
 
 $p(s_n-E(s_n)>=t) = p(\sum [x_i-E(x_i)]>=t) < e^{-st}E(e^{s\sum[x_i-E(x_i)]}) = e^{-st}\prod{E[e^{s(x_i-E(x_i))}]}$
 
-next proof:$E[e^{sz}] < e^\frac{s^2(a-b)^2}{8} $,among which z is a random variable, E(z) = 0,$z \in [a,b]$
+next proof: $E[e^{sz}] < e^\frac{s^2(a-b)^2}{8}$ ,among which z is a random variable, E(z) = 0, $z \in [a,b]$
 
 due to  exponential function is convexity:
 
@@ -100,7 +101,7 @@ when $s_n-E(s_n)<0$, we can do the similar proof, so get $p(|s_n-E(s_n)|>=t) =< 
 
 4. For Guassian distribution
 
-$\frac{1}{\sqrt{2\pi}}\int_{t}^{\infin}e^{\frac{-x^2}{2}}dx <= min{\frac{1}{2}e^{\frac{t^2}{2}},\frac{1}{\sqrt{2\pi}t^2}}e^{\frac{-t^2}{2}}$
+$\frac{1}{\sqrt{2\pi}}\int_{t}e^{\frac{-x^2}{2}}dx <= min{\frac{1}{2}e^{\frac{t^2}{2}},\frac{1}{\sqrt{2\pi}t^2}}e^{\frac{-t^2}{2}}$
 
 the proof is simple
 
