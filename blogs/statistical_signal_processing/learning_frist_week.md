@@ -33,11 +33,18 @@ $\sum$ is covariance matrix $\sum_{ij} = E[(x_i-\mu_i)(x_j-\mu_j)]$, d is the di
 ## 4. characteristic function:
 $\phi(w) = E(exp(-iwx))$ it is useful when demonstrate something
 ## 5. inequality
+
+In this part, we try to find some bounds of probability distribution of sum of some variables.
+
 1. markov inequality
 
 z is non-negative random variable, t is a constant and t>0.
 
 $p(z>t) < \frac{E(z)}{t}$
+
+Generally,
+
+$p(z>t) < \frac{E(\phi(z))}{\phi(t)}$
 
 2. chebyshev inequality
 
@@ -47,7 +54,7 @@ $p(|z-E(z)|>t) = p(|z-E(z)|^2>t^2) < \frac{E[|z-E(z)|^2]}{t^2} = \frac{Var(z)}{t
 
 $x_i$ is independent random variable, $x_i \in [a_i,b_i]$, $s_n = \sum^{n}_{i} x_i$, t is constant, t > 0.
 
-$p(|s_n-E(s_n)|>=t) =< 2e^{\frac{2t^2}{\sum(b_i-a_i)}}$
+$p(|s_n-E(s_n)|>=t) =< 2e^{-\frac{2t^2}{\sum(b_i-a_i)}}$
 
 proof:
 
@@ -93,16 +100,29 @@ $E[e^{sz}] < e^{\frac{s^2(b-a)^2}{8}}$
 
 if $s = \frac{4t}{\sum (b_i-a_i)}$
 
-$p(s_n-E(s_n)>=t) =< 2e^{\frac{2t^2}{\sum(b_i-a_i)}}$
+$p(s_n-E(s_n)>=t) =< 2e^{-\frac{2t^2}{\sum(b_i-a_i)}}$
 
 denmonstrate is finished.
 
-when $s_n-E(s_n)<0$, we can do the similar proof, so get $p(|s_n-E(s_n)|>=t) =< 2e^{\frac{2t^2}{\sum(b_i-a_i)}}$
+when $s_n-E(s_n)<0$, we can do the similar proof, so get $p(|s_n-E(s_n)|>=t) =< 2e^{-\frac{2t^2}{\sum(b_i-a_i)}}$
 
-4. For Guassian distribution
+4. sub-Gaussian 
 
-$\frac{1}{\sqrt{2\pi}}\int_{t}e^{\frac{-x^2}{2}}dx <= min\{\frac{1}{2}e^{\frac{t^2}{2}},\frac{1}{\sqrt{2\pi}t^2}e^{\frac{-t^2}{2}}\}$
+It means the tail of its distribution decay at least as fast as Gussian.
 
-the proof is simple
+if exist a c so that $E(e^{sX}) >e^{cs^2/2}$ is real for all s, X is sub-Gussian.
 
-5. 
+5. sum of sub-Guaasian
+
+$X_i$ is sub-Gaussian variable, $S_n = \sum_n X_i$, c is constant, c > 0.
+
+$p(|S_n-E(S_n)|>=t) <= 2e^{-t^2/(2nc)}$
+
+$\mu = \frac{1}{n} \sum_n X_i$
+
+$p(|\mu-E(\mu)|>=t) <= 2e^{-nt^2/(2c)}$
+
+If $p(\left|X_i-\mathbb{E}\left[X_i\right]\right| \geq t) \leq a e^{-b t^2 / 2}$ holds for constants $a, b>0$ and all $t \geq 0$, then
+$$
+\mathbb{E}\left[e^{s\left(X_i-\mathbb{E}\left[X_i\right]\right)}\right] \leq e^{4 a s^2 / b}
+$$
