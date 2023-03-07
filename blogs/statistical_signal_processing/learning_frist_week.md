@@ -122,7 +122,7 @@ $\mu = \frac{1}{n} \sum_n X_i$
 
 $p(|\mu-E(\mu)|>=t) <= 2e^{-nt^2/(2c)}$
 
-If $p(\left|X_i-\mathbb{E}\left[X_i\right]\right| \geq t) \leq a e^{-b t^2 / 2}$ holds for constants $a, b>0$ and all $t \geq 0$, then
+6. If $p(\left|X_i-\mathbb{E}\left[X_i\right]\right| \geq t) \leq a e^{-b t^2 / 2}$ holds for constants $a, b>0$ and all $t \geq 0$, then
 $$
 \mathbb{E}\left[e^{s\left(X_i-\mathbb{E}\left[X_i\right]\right)}\right] \leq e^{4 a s^2 / b}
 $$
